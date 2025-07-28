@@ -1,0 +1,20 @@
+{
+  "name": "agente-bot-whats-ia-gemini",
+  "version": "1.0.0",
+  "description": "foi porposto um desafio um colega me chamou para resolver um problema de integração , inicalmente foi feito em python , mais acabei vendo a necessidade de fazer onde me achava melhor\r usei muita i.a nao nego mais foi tudo supervisionado \r eu pedi para que a ia deixasse detalhado os pontos do cod que eu queria explicação \r nesse sentido então eu fiz da seguinte forma como era um assunto que eu nao tinha muito associação e conhecimento aproveitei para aprendizado \r então aproveitando tentei usar varias api gratuitas mais nao conseguir e tive exito na i.a e apikey paga usando o modo free dela a gemini no plano pro \r então eu usei o que tinha ireei subri apenas para aprendisado e mostra o desafio e fim concluido pode pararecer meio baguncado o cod pois foram algumas horas para entender e busca o caminho \r então fui estudando e estruturando segue um dos caminho que visualizei e pedir o chat para idealizar organizado para que eu pudesse entender e da o ponta pe incial\r 🤖 Agente de IA no WhatsApp\r ├── 1️⃣ Entrada do usuário (mensagem no WhatsApp)\r │   └── Ex: \"Quanto faturei com canetas esse mês?\"\r │\r ├── 2️⃣ Captura da mensagem\r │   └── Via Baileys ou Twilio\r │\r ├── 3️⃣ Envio da mensagem para IA\r │   └── API via OpenRouter (Claude, Mistral, GPT, etc)\r │       └── Prompt estruturado: \"Extraia filtros da frase do usuário\"\r │\r ├── 4️⃣ IA responde com estrutura (ex: JSON)\r │   └── Ex:\r │       {\r │         \"ação\": \"faturamento\",\r │         \"produto\": \"canetas\",\r │         \"data_inicio\": \"2025-06-01\",\r │         \"data_fim\": \"2025-06-30\"\r │       }\r │\r ├── 5️⃣ Back-end processa\r │   ├── Valida estrutura\r │   ├── Consulta banco (MySQL, Mongo, JSON local)\r │   └── Retorna resultado\r │\r ├── 6️⃣ Formatação da resposta\r │   └── Pode ser feita pela IA ou pelo código\r │       └── Ex: \"Você faturou R$ 742,00 com canetas em junho.\"\r │\r └── 7️⃣ Envio de volta para WhatsApp\r     └── Bot responde usuário",
+  "main": "teste_tiny_api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srsaviorangell/agente-bot-whats-ia-gemini.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srsaviorangell/agente-bot-whats-ia-gemini/issues"
+  },
+  "homepage": "https://github.com/srsaviorangell/agente-bot-whats-ia-gemini#readme"
+}
