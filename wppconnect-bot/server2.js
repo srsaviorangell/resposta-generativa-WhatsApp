@@ -12,7 +12,6 @@ const userContexts = {}; // Objeto para armazenar o contexto de cada usuário
 function getUserContext(from) {
     if (!userContexts[from]) {
         userContexts[from] = {
-            lastPokemon: null // Armazena o último Pokémon discutido com este usuário
         };
     }
     return userContexts[from];
