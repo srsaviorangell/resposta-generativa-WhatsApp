@@ -1,3 +1,5 @@
+
+
 // Importa a biblioteca axios para fazer requisições HTTP
 const axios = require('axios');
 
@@ -62,7 +64,7 @@ async function buscarProdutoNoTiny(nomeProduto) {
 // --- Execução do Teste ---
 // A função principal que chama a busca com o termo "cuba"
 async function main() {
-    await buscarProdutoNoTiny('cuba');
+    await buscarProdutoNoTiny('cutelo');
 }
 
 main();
