@@ -1,3 +1,6 @@
-2025/07/06-20:16:06.005 1150 Reusing MANIFEST C:\Users\sr188\Desktop\Codes\agente\agente-bot-whats-ia-gemini\wppconnect-bot\tokens\whatsapp-bot\Default\Local Storage\leveldb/MANIFEST-000001
-2025/07/06-20:16:06.056 1150 Recovering log #7
-2025/07/06-20:16:06.081 1150 Reusing old log C:\Users\sr188\Desktop\Codes\agente\agente-bot-whats-ia-gemini\wppconnect-bot\tokens\whatsapp-bot\Default\Local Storage\leveldb/000007.log 
+2025/08/07-01:13:24.771 3780 Reusing MANIFEST C:\Users\sr188\Desktop\trabalhos\amigos\whats-ia\resposta-generativa-WhatsApp\wppconnect-bot\tokens\whatsapp-bot\Default\Local Storage\leveldb/MANIFEST-000001
+2025/08/07-01:13:24.777 3780 Recovering log #20
+2025/08/07-01:13:24.780 3780 Reusing old log C:\Users\sr188\Desktop\trabalhos\amigos\whats-ia\resposta-generativa-WhatsApp\wppconnect-bot\tokens\whatsapp-bot\Default\Local Storage\leveldb/000020.log 
+2025/08/07-01:14:24.787 4060 Level-0 table #24: started
+2025/08/07-01:14:24.793 4060 Level-0 table #24: 15762 bytes OK
+2025/08/07-01:14:24.795 4060 Delete type=0 #20

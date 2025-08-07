@@ -56,7 +56,7 @@ async function buscaDadosAPI(nomeOuId) {
 
 async function main() {
     try {
-        const produtos = await buscaDadosAPI('cutelo'); // Altere aqui para o nome ou ID desejado
+        const produtos = await buscaDadosAPI('cuba'); // Altere aqui para o nome ou ID desejado
 
         if (produtos.length === 0) {
             console.log('Nenhum produto encontrado.');
