@@ -101,7 +101,7 @@ async function buscarProdutoTiny(termoBusca) {
                 nome: dados.nome,
                 id: dados.id,
                 preco: dados.preco,
-                estoque: dados.estoque
+                estoque: dados.gtin || "API Rertornou estoque 0",
             };
         });
         return { sucesso: true, produtos: listaProdutos };
@@ -317,7 +317,7 @@ async function processarBusca(termoBusca, context) {
         resultadoBusca.produtos.forEach(produto => {
             respostaProdutos += `* ${produto.nome} (ID: ${produto.id})\n`;
             respostaProdutos += `  Preço: R$ ${produto.preco}\n`;
-            respostaProdutos += `  Estoque: ${produto.estoque}\n\n`;
+            respostaProdutos += `  Estoque: ${produto.gtin}\n\n`;
         });
         respostaProdutos += "Posso ajudar com mais alguma busca?";
         return respostaProdutos;

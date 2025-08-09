@@ -1,0 +1,32 @@
+{
+  "retorno": {
+    "status_processamento": "3",
+    "status": "OK",
+    "produto": {
+      "id": "976897651",
+      "nome": "12x Gelo Gel Artificial Reutilizável 500ml Melhor Eficiência",
+      "codigo": "V7VIV7-GELOC500K12",
+      "unidade": "",
+      "saldo": 14,
+      "saldoReservado": 0,
+      "depositos": [
+        {
+          "deposito": {
+            "nome": "Geral",
+            "desconsiderar": "N",
+            "saldo": 14,
+            "empresa": "24296646000126"
+          }
+        },
+        {
+          "deposito": {
+            "nome": "Mercado Livre Full",
+            "desconsiderar": "S",
+            "saldo": 2,
+            "empresa": "24296646000126"
+          }
+        }
+      ]
+    }
+  }
+}

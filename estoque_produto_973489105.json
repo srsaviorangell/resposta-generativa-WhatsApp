@@ -1,0 +1,32 @@
+{
+  "retorno": {
+    "status_processamento": "3",
+    "status": "OK",
+    "produto": {
+      "id": "973489105",
+      "nome": "10 Cubas Gastronômica Gn 1/6x100 Rechaud Buffet Self Service",
+      "codigo": "V7VAC16100SASTK10",
+      "unidade": "",
+      "saldo": 3,
+      "saldoReservado": 0,
+      "depositos": [
+        {
+          "deposito": {
+            "nome": "Geral",
+            "desconsiderar": "N",
+            "saldo": 3,
+            "empresa": "24296646000126"
+          }
+        },
+        {
+          "deposito": {
+            "nome": "Mercado Livre Full",
+            "desconsiderar": "S",
+            "saldo": 0,
+            "empresa": "24296646000126"
+          }
+        }
+      ]
+    }
+  }
+}

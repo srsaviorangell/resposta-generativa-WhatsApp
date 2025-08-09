@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/srsaviorangell/agente-bot-whats-ia-gemini/issues"
   },
-  "homepage": "https://github.com/srsaviorangell/agente-bot-whats-ia-gemini#readme"
+  "homepage": "https://github.com/srsaviorangell/agente-bot-whats-ia-gemini#readme",
+  "dependencies": {
+    "axios": "^1.11.0"
+  }
 }

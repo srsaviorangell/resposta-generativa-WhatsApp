@@ -1,0 +1,10 @@
+{
+  "status_processamento": 1,
+  "status": "Erro",
+  "codigo_erro": "10",
+  "erros": [
+    {
+      "erro": "O parâmetro id deve ser informado"
+    }
+  ]
+}

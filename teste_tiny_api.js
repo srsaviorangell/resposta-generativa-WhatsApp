@@ -1,70 +1,68 @@
-
-
-// Importa a biblioteca axios para fazer requisições HTTP
 const axios = require('axios');
+const fs = require('fs');
+const querystring = require('querystring');
+const TINY_API_TOKEN = '2087de22efa35b14ce562279a50555faca902d77ffa4c48d7ec620cda77cb0c3';
 
-// IMPORTANTE: Cole aqui o seu Token da API do Tiny ERP
-const TINY_API_TOKEN = '2087de22efa35b14ce562279a50555faca902d77ffa4c48d7ec620cda77cb0c3'; // <--- COLOQUE SEU TOKEN AQUI
 
 /**
- * Busca produtos por nome na API do Tiny ERP.
- * @param {string} nomeProduto - O nome do produto a ser pesquisado (ex: "cuba")
- * @returns {Promise<void>}
+ * Consulta o estoque de um produto pelo ID usando a API Tiny 2.0
+ * @param {number|string} idProduto - ID do produto no Tiny
  */
-async function buscarProdutoNoTiny(nomeProduto) {
-    // Verifica se o token foi inserido
-    if (TINY_API_TOKEN === 'SEU_TOKEN_AQUI' || !TINY_API_TOKEN) {
-        console.error("[ERRO] Por favor, insira o seu TINY_API_TOKEN no código para continuar.");
+async function consultarEstoque(idProduto) {
+    if (!TINY_API_TOKEN || TINY_API_TOKEN === 'SEU_TOKEN_AQUI') {
+        console.error('[ERRO] Insira seu token Tiny API no código.');
         return;
     }
 
-    console.log(`Buscando por "${nomeProduto}" na API do Tiny ERP...`);
+    const url = 'https://api.tiny.com.br/api2/produto.obter.estoque.php';
 
-    // AQUI ESTÁ A CORREÇÃO: "produto" foi trocado por "produtos"
-    const url = 'https://api.tiny.com.br/api2/produtos.pesquisa.php';
-    const params = {
+    const body = querystring.stringify({
         token: TINY_API_TOKEN,
-        pesquisa: nomeProduto,
+        id: idProduto,
         formato: 'json'
-    };
+    });
 
     try {
-        const response = await axios.get(url, { params });
-        const retorno = response.data.retorno;
+        console.log(`🔎 Consultando estoque do produto ID ${idProduto}...`);
 
-        // Verifica se a API retornou um erro
-        if (retorno.status === 'ERRO') {
-            const erroMsg = retorno.erros ? retorno.erros[0] : 'Erro desconhecido na API.';
-            console.error(`[ERRO NA API] ${erroMsg}`);
+        const response = await axios.post(url, body, {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        });
+
+        const data = response.data;
+
+        // Salvar resultado em arquivo JSON
+        const nomeArquivo = `estoque_produto_${idProduto}.json`;
+        fs.writeFileSync(nomeArquivo, JSON.stringify(data, null, 2), 'utf-8');
+        console.log(`📁 Resultado salvo em arquivo: ${nomeArquivo}`);
+
+        if (data?.retorno?.status !== 'OK') {
+            console.error('[ERRO] A API retornou um erro:', data?.retorno?.mensagem || 'Erro desconhecido');
             return;
         }
 
-        const produtos = retorno.produtos;
+        const produto = data.retorno.produto;
 
-        if (produtos && produtos.length > 0) {
-            console.log(`\n✅ Sucesso! Encontrei ${produtos.length} produto(s):`);
-            produtos.forEach(item => {
-                const prod = item.produto;
-                console.log('------------------------------------');
-                console.log(`  Nome: ${prod.nome}`);
-                console.log(`  ID: ${prod.id}`);
-                console.log(`  Preço: R$ ${parseFloat(prod.preco).toFixed(2)}`);
-                console.log(`  Estoque: ${parseInt(prod.saldo)}`);
+        console.log('\n✅ Estoque do produto:');
+        console.log(`Nome: ${produto.nome}`);
+        console.log(`Código: ${produto.codigo}`);
+        console.log(`Saldo total: ${produto.saldo}`);
+        console.log(`Saldo reservado: ${produto.saldoReservado}`);
+        console.log(`Disponível: ${produto.saldo - produto.saldoReservado}`);
+
+        if (produto.depositos && produto.depositos.length > 0) {
+            console.log('\n📦 Estoque por depósito:');
+            produto.depositos.forEach(deposito => {
+                const d = deposito.deposito;
+                console.log(`- Depósito: ${d.nome} | Saldo: ${d.saldo} | Reservado: ${d.reservado} | Disponível: ${d.saldo - d.reservado}`);
             });
-        } else {
-            console.log(`\nℹ️ Nenhum produto encontrado com o nome "${nomeProduto}".`);
         }
 
     } catch (error) {
-        console.error('\n[ERRO FATAL] Ocorreu um problema ao tentar se comunicar com a API do Tiny.');
-        console.error('Detalhes:', error.message);
+        console.error('[ERRO] Falha na comunicação com a API Tiny:', error.message);
     }
 }
 
-// --- Execução do Teste ---
-// A função principal que chama a busca com o termo "cuba"
-async function main() {
-    await buscarProdutoNoTiny('cutelo');
-}
-
-main();
+// Exemplo de uso: colocar o ID real do produto Tiny aqui
+const idProdutoTeste = 976897651;
+consultarEstoque(idProdutoTeste);
