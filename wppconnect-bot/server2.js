@@ -1,11 +1,12 @@
+const { consultarEstoque } = require('./teste_tiny_api.js');
 // Carrega as variáveis de ambiente do arquivo .env para manter chaves seguras.
-require('dotenv').config(); 
-const express = require('express'); 
-const axios = require('axios'); 
-const { create } = require('@wppconnect-team/wppconnect'); 
-const { GoogleGenerativeAI } = require('@google/generative-ai'); 
+require('dotenv').config();
+const express = require('express');
+const axios = require('axios');
+const { create } = require('@wppconnect-team/wppconnect');
+const { GoogleGenerativeAI } = require('@google/generative-ai');
 const fs = require('fs');
-
+const querystring = require('querystring');
 
 // Tenta obter o token da API Tiny do ambiente.
 const TINY_API_TOKEN = process.env.TINY_API_TOKEN?.trim();
@@ -19,8 +20,7 @@ const userContexts = {};
 function getUserContext(from) {
     if (!userContexts[from]) {
         userContexts[from] = {
-            // Adiciona a propriedade 'state' para gerenciar o fluxo da conversa
-            state: 'INITIAL', 
+            state: 'INITIAL',
             pendingAction: null,
             produtos: []
         };
@@ -56,13 +56,11 @@ async function chamarGeminiSDK(prompt) {
         const response = await result.response;
         let text = response.text();
 
-        // Tenta encontrar e extrair um bloco JSON da resposta
         const jsonBlockRegex = /```json\s*([\s\S]*?)\s*```/;
         const match = text.match(jsonBlockRegex);
         if (match && match[1]) {
-            text = match[1].trim(); 
+            text = match[1].trim();
         } else {
-            // Se não encontrar, remove blocos de código genéricos
             text = text.replace(/```/g, '').trim();
         }
 
@@ -73,13 +71,22 @@ async function chamarGeminiSDK(prompt) {
         throw error;
     }
 }
-
+function salvarJSON(nomeArquivo, dados) {
+    try {
+        fs.writeFileSync(nomeArquivo, JSON.stringify(dados, null, 2), 'utf8');
+        console.log(`✅ Dados salvos em ${nomeArquivo}`);
+    } catch (error) {
+        console.error('❌ Erro ao salvar arquivo JSON:', error);
+    }
+}
 /**
  * Busca produtos na API do Tiny ERP.
  * @param {string} termoBusca - Termo de pesquisa (nome ou ID do produto).
  * @returns {Promise<object>} Um objeto com o status da busca e a lista de produtos.
  */
 async function buscarProdutoTiny(termoBusca) {
+    const resultadoFinal = [];
+
     if (!TINY_API_TOKEN) {
         console.error("[ERRO] O TINY_API_TOKEN não está configurado. Verifique seu arquivo .env.");
         return { sucesso: false, erro: "O token da API Tiny não está configurado." };
@@ -93,14 +100,16 @@ async function buscarProdutoTiny(termoBusca) {
                 pesquisa: termoBusca,
                 formato: 'json'
             }
-        });
+        } );
 
-        const produtos = response.data.retorno.produtos;
+        const retorno = response.data.retorno;
 
-        if (!produtos || produtos.length === 0) {
+        if (retorno.status === 'ERRO' || !retorno.produtos || retorno.produtos.length === 0) {
             console.log('[INFO] Nenhum produto encontrado para:', termoBusca);
             return { sucesso: false, erro: `Não encontrei nenhum produto para "${termoBusca}".` };
         }
+
+        const produtos = retorno.produtos;
 
         const listaProdutos = produtos.map(item => {
             const dados = item.produto;
@@ -108,158 +117,152 @@ async function buscarProdutoTiny(termoBusca) {
                 nome: dados.nome,
                 id: dados.id,
                 preco: dados.preco,
-                estoque: dados.estoque
             };
         });
+       const listaProdutosComEstoque = [];
+        for (const item of listaProdutos) {
+            const responseEstoque = await consultarEstoque(item.id);
+            const saldoEstoque = responseEstoque?.retorno?.produto?.saldo ?? 'Sem info';
+            
+            listaProdutosComEstoque.push({
+                nome: item.nome,
+                id: item.id,
+                preco: item.preco,
+                estoque: saldoEstoque
+            });
+        }
+        // =========================================================
+        salvarJSON(`produtos.json`, listaProdutosComEstoque);
 
-        return { sucesso: true, produtos: listaProdutos };
-
+        return { sucesso: true, produtos: listaProdutosComEstoque };
     } catch (error) {
         console.error('[ERRO] Falha ao chamar a API do Tiny:', error.message);
         return { sucesso: false, erro: "Ocorreu um erro ao buscar produtos. Tente novamente mais tarde." };
     }
 }
-
 /**
- * Filtra uma lista de produtos por tokens de busca.
- * Esta função quebra o termo de busca em palavras e verifica se todas estão no nome do produto.
- * @param {Array} produtos - Lista de produtos a serem filtrados.
- * @param {string} termoBusca - Novo termo de busca.
- * @param {boolean} strict - Se true, exige que todos os tokens estejam no nome. Se false, exige pelo menos um.
- * @returns {Array} - Lista de produtos filtrada.
+ * Consulta o saldo de estoque de um produto pelo ID.
+ * @param {number|string} idProduto - ID do produto no Tiny.
+ * @returns {Promise<number|null>} - Retorna o saldo total do produto, 0 se o saldo for zero, ou null em caso de erro.
  */
+
+
 function tokenizarTexto(texto) {
-  return texto.toLowerCase()
-    .split(/\s+/) // separa por espaço
-    .map(token => {
-      // Se tiver números + letras juntos (ex: 50mm), separa eles
-      const match = token.match(/^(\d+)([a-z]+)$/);
-      return match ? [match[1], match[2]] : [token];
-    })
-    .flat();
+    return texto.toLowerCase()
+        .split(/\s+/)
+        .map(token => {
+            const match = token.match(/^(\d+)([a-z]+)$/);
+            return match ? [match[1], match[2]] : [token];
+        })
+        .flat();
 }
 
-function salvarJSON(nomeArquivo, dados) {
-  try {
-    fs.writeFileSync(nomeArquivo, JSON.stringify(dados, null, 2), 'utf8');
-    console.log(`✅ Dados salvos em ${nomeArquivo}`);
-  } catch (error) {
-    console.error('❌ Erro ao salvar arquivo JSON:', error);
-  }
-}
-/**
- * Filtra uma lista de produtos por tokens de busca, priorizando a melhor correspondência.
- * @param {Array} produtos - Lista de produtos a serem filtrados.
- * @param {string} termoBusca - Novo termo de busca para refinamento.
- * @returns {Array} - Lista de produtos filtrada e ordenada por relevância.
- */
+
+
 function filtrarProdutosPorRelevancia(produtos, termoBusca) {
     if (!termoBusca || produtos.length === 0) {
         return produtos;
     }
-
     const tokensBusca = tokenizarTexto(termoBusca);
     if (tokensBusca.length === 0) {
         return produtos;
     }
-
-    // Calculamos a "pontuação" de cada produto com base nos tokens encontrados.
     const produtosComPontuacao = produtos.map(produto => {
         let pontuacao = 0;
-        // Pega os tokens do nome do produto (você já faz isso em processarBusca)
         const tokensProduto = tokenizarTexto(produto.nome);
-
-        // Verifica quantos tokens do refinamento estão presentes no nome do produto.
         tokensBusca.forEach(tokenRefinamento => {
             if (tokensProduto.includes(tokenRefinamento)) {
                 pontuacao++;
             }
         });
-
-        // Retornamos o produto junto com sua pontuação.
         return {
             ...produto,
             pontuacao: pontuacao
         };
     });
-
-    // Filtramos apenas os produtos que tiveram pelo menos um token de refinamento.
     const produtosFiltrados = produtosComPontuacao.filter(p => p.pontuacao > 0);
-
-    // Ordenamos a lista para que os produtos com mais tokens correspondentes apareçam primeiro.
     produtosFiltrados.sort((a, b) => b.pontuacao - a.pontuacao);
-    
     return produtosFiltrados;
 }
 
 
-/**
- * Processa a mensagem recebida e decide a resposta (comandos internos ou IA).
- * @param {string} mensagemRecebida - Texto recebido do usuário.
- * @param {object} context - O objeto de contexto do usuário para armazenamento de estado.
- * @returns {Promise<string>} - A resposta a ser enviada ao usuário.
- */
 async function processarMensagem(mensagemRecebida, context) {
     console.debug('[DEBUG] Processando mensagem:', mensagemRecebida);
 
     const msg = mensagemRecebida.toLowerCase().trim();
-    
-    // 1. Lógica para SAIR do modo de busca (primeira coisa a ser checada)
+  
+    const saudacoes = ['olá','olá Boa Tarde','olá Boa noite','olá Bom dia ','oi Boa Tarde','oi Boa noite','oi Bom dia ' ,'oi', 'bom dia', 'boa tarde', 'boa noite', 'e aí', 'tudo bem'];
+    const saudacaoEncontrada = saudacoes.find(saudacao => msg.includes(saudacao));
+
+    if (saudacaoEncontrada) {
+        return `${saudacaoEncontrada}! Em que posso te ajudar hoje? 😉
+            \nEstarei à sua disposição!
+            \nVocê pode pesquisar por produtos e eu mostrarei o estoque e o valor de cada item. Se houver muitos itens, pedirei para você ser mais específico(a) para refinar a busca.
+            \nPara sair ou começar uma nova busca, é só digitar 'cancelar'. Estou ansioso para tirar suas dúvidas! 😉😉😉`;
+        }
     const comandosDeSaida = ['cancelar', 'nao', 'não', 'nova busca', 'sair'];
     if (comandosDeSaida.includes(msg)) {
         context.state = 'INITIAL';
-        context.produtos = []; // Limpa os produtos para a próxima busca
+        context.produtos = [];
         context.pendingAction = null;
         return "Ok, finalizei a busca. Diga o que gostaria de pesquisar agora.";
     }
 
-    // Lógica para mostrar a lista completa (mantida, mas com a verificação de contexto)
-    if (msg === 'todos' || msg === 'mostrar tudo' || msg === 'lista completa') {
-        if (context.produtos && context.produtos.length > 0) {
-            let respostaProdutos = `🔎 Aqui está a lista completa dos produtos encontrados anteriormente:\n\n`;
-            context.produtos.forEach(produto => {
+    if (context.state === 'SEARCH_MODE' && context.produtos && context.produtos.length > 0) {
+        
+        const comandosVerTodos = ['tudo','todos', 'todas', 'mostrar tudo', 'lista completa', 'ver todos', 'sim', 'sim porfavor', 'claro', 'yes', 'ok'];
+        const isVerTodos = comandosVerTodos.includes(msg);
+        const matchNum = msg.match(/(?:mostra-me|mostra|quero ver)?\s*(?:os|as)?\s*(\d+)\s*(?:primeir[oa]s?)?/);
+        const numeroParaMostrar = matchNum ? parseInt(matchNum[1] || matchNum[2] || matchNum[3]) : null;
+
+           if (isVerTodos || numeroParaMostrar) {
+            const limite = isVerTodos ? context.produtos.length : Math.min(numeroParaMostrar, context.produtos.length);
+            let respostaProdutos = `✅ Certo! Mostrando os primeiros ${limite} de ${context.produtos.length} do seu pedido:\n\n`;
+            
+            // USE OS DADOS DE ESTOQUE JÁ DISPONÍVEIS NO CONTEXTO
+            for (const produto of context.produtos.slice(0, limite)) {
+                const estoqueTexto = produto.estoque !== 'Sem info'
+                    ? `Estoque: ${produto.estoque}`
+                    : 'Estoque: Não disponível (entre em contato para mais detalhes)';
+                
                 respostaProdutos += `* ${produto.nome} (ID: ${produto.id})\n`;
                 respostaProdutos += `  Preço: R$ ${produto.preco}\n`;
-                respostaProdutos += `  Estoque: ${produto.estoque}\n\n`;
-            });
-            respostaProdutos += "Para refinar, me diga mais um termo. Para sair, digite 'cancelar'.";
+                respostaProdutos += `  ${estoqueTexto}\n\n`;
+            }
+
+            respostaProdutos += "\n\nQuer me dar mais um detalhe ou prefere cancelar?";
+            return respostaProdutos;
+        }
+
+        console.info(`[INFO] Mensagem recebida em modo de busca. Refinando por "${msg}".`);
+        const produtosRefinados = filtrarProdutosPorRelevancia(context.produtos, msg);
+
+        if (produtosRefinados.length > 0) {
+            context.produtos = produtosRefinados;
+            let respostaProdutos = `Olha só o que achei pro termo "${msg}" e encontrei:\n\n`;
+            
+            // USE OS DADOS DE ESTOQUE JÁ DISPONÍVEIS NO CONTEXTO
+            for (const produto of produtosRefinados.slice(0, MAX_PRODUTOS_PARA_LISTAR)) {
+                const estoqueTexto = produto.estoque !== 'Sem info'
+                    ? `Estoque: ${produto.estoque}`
+                    : 'Estoque: Não disponível (entre em contato para mais detalhes)';
+
+                respostaProdutos += `* ${produto.nome} (ID: ${produto.id})\n`;
+                respostaProdutos += `  Preço: R$ ${produto.preco}\n`;
+                respostaProdutos += `  ${estoqueTexto}\n\n`;
+            }
+
+            if (produtosRefinados.length > MAX_PRODUTOS_PARA_LISTAR) {
+                respostaProdutos += `...E tem mais ${produtosRefinados.length - MAX_PRODUTOS_PARA_LISTAR} resultados.`;
+            }
+
+            respostaProdutos += "\n\nQuer me dar mais um detalhe ou prefere cancelar?";
             return respostaProdutos;
         } else {
-            return "Ainda não temos uma lista de produtos para mostrar. Por favor, faça uma busca primeiro.";
+            return `Não encontrei nenhum produto que corresponda a "${msg}" na sua busca anterior. Tente outro termo ou digite 'cancelar'.`;
         }
     }
 
-    // 2. Lógica para REFINAR a busca (tratada antes de chamar a IA)
-    if (context.state === 'SEARCH_MODE') {
-        if (context.produtos && context.produtos.length > 0) {
-            console.info(`[INFO] Mensagem recebida em modo de busca. Refinando por "${msg}".`);
-
-            const produtosRefinados = filtrarProdutosPorRelevancia(context.produtos, msg);
-
-            if (produtosRefinados.length > 0) {
-                context.produtos = produtosRefinados;
-                let respostaProdutos = `✅ Busquei por "${msg}" e encontrei os seguintes produtos:\n\n`;
-                
-                // Exibe no máximo o limite definido (MAX_PRODUTOS_PARA_LISTAR)
-                produtosRefinados.slice(0, MAX_PRODUTOS_PARA_LISTAR).forEach(produto => {
-                    respostaProdutos += `* ${produto.nome} (ID: ${produto.id})\n`;
-                    respostaProdutos += `  Preço: R$ ${produto.preco}\n`;
-                    respostaProdutos += `  Estoque: ${produto.estoque}\n\n`;
-                });
-
-                if (produtosRefinados.length > MAX_PRODUTOS_PARA_LISTAR) {
-                    respostaProdutos += `...e mais ${produtosRefinados.length - MAX_PRODUTOS_PARA_LISTAR} resultados.`;
-                }
-
-                respostaProdutos += "\n\nPara refinar, me diga mais um termo. Para sair, digite 'cancelar'.";
-                return respostaProdutos;
-            } else {
-                return `Não encontrei nenhum produto que corresponda a "${msg}" na sua busca anterior. Tente outro termo ou digite 'cancelar'.`;
-            }
-        }
-    }
-
-    // 3. Lógica para o estado de confirmação (sem alterações)
     if (context.state === 'AWAITING_CONFIRMATION') {
         if (msg === 'sim' || msg === '1') {
             const termoBusca = context.pendingAction.termo;
@@ -272,41 +275,23 @@ async function processarMensagem(mensagemRecebida, context) {
             return "Ok, busca cancelada. Posso ajudar com mais alguma coisa?";
         }
     }
-
-    // 4. Lógica para o estado INICIAL (recorrendo à IA)
     const promptParaGemini = `
         SUA ÚNICA RESPOSTA DEVE SER UM OBJETO JSON VÁLIDO.
         NÃO INCLUA NENHUM TEXTO, SAUDAÇÃO OU FORMATAÇÃO ADICIONAL.
         Sempre retorne apenas um JSON.
-
         Analise a "Frase do usuário" e defina a intenção.
-        Considere o contexto da conversa. Se houver uma lista de produtos na memória, o usuário pode estar tentando refinar a busca. Se a frase for um novo produto, a intenção deve ser uma nova busca.
-        
+        Considere o contexto da conversa.
         --- Intenção: Buscar Produto (API Tiny) ---
         Se a frase pedir para buscar um produto pela primeira vez e for um termo amplo, retorne:
-        {
-            "acao": "confirma_busca",
-            "termo": "[termo que a IA identificou]"
-        }
+        { "acao": "confirma_busca", "termo": "[termo que a IA identificou]" }
         Se for uma busca por um termo específico, retorne:
-        {
-            "acao": "buscar_produto",
-            "termo": "[termo específico que será usado na busca]"
-        }
-        
+        { "acao": "buscar_produto", "termo": "[termo específico que será usado na busca]" }
         --- Intenção: Nova Busca ---
         Se a frase iniciar uma nova busca que não tem relação com o tópico anterior, retornar:
-        {
-            "acao": "nova_busca",
-            "termo": "[o novo termo de busca]"
-        }
-
+        { "acao": "nova_busca", "termo": "[o novo termo de busca]" }
         --- Intenção padrão: Conversa genérica (não é produto) ---
         Se não reconhecer nenhuma intenção clara, retorne:
-        {
-            "acao": "desconhecida"
-        }
-
+        { "acao": "desconhecida" }
         ---
         Frase do usuário: "${msg}"
         ---
@@ -327,29 +312,25 @@ async function processarMensagem(mensagemRecebida, context) {
         
         switch(dados.acao) {
             case "confirma_busca":
-                context.state = 'AWAITING_CONFIRMATION';
-                context.pendingAction = dados;
-                return `Você quer buscar por "${termoBusca}"? Confirme com 'Sim' ou 'Não'.`;
+            const termoLower = termoBusca.trim().toLowerCase();
+            let quantificador = 'quantos'; // Padrão para masculino
+
+            if (termoLower.endsWith('a') || termoLower.endsWith('as')) {
+                quantificador = 'quantas';
+            }
+            context.state = 'AWAITING_CONFIRMATION';
+            context.pendingAction = dados;
+            return `Claro que sim! 😄Está querendo saber ${quantificador} ${termoBusca} temos por aqui, não é?`;
+
             
             case "buscar_produto":
-            case "nova_busca": // Agora `nova_busca` também leva ao `SEARCH_MODE`
+            case "nova_busca": 
                 context.produtos = [];
                 context.state = 'SEARCH_MODE';
                 return processarBusca(termoBusca, context);
-
-            case "refinar_busca":
-                // Se a IA ainda retornar esta ação, a lógica de SEARCH_MODE já a terá capturado.
-                // Mas, por segurança, podemos tratar aqui, mesmo que seja redundante.
-                if (context.produtos && context.produtos.length > 0) {
-                    const produtosRefinados = filtrarProdutosPorRelevancia(context.produtos, termoBusca);
-                    context.produtos = produtosRefinados;
-                    // ... (restante do código de refinamento)
-                    return `Refinamento feito com base na IA. Total de produtos: ${produtosRefinados.length}`;
-                }
-                return `Não há busca para refinar. Tente uma nova busca.`;
-                
+            
             case "desconhecida":
-                return "Olá! Sou um assistente de busca de produtos. Por favor, me diga qual produto você gostaria de pesquisar e eu farei o meu melhor para ajudar!";
+                return "Acho que meu cérebro de bot deu um nó agora 😂\n\n Repete pra mim o que você precisa que eu vou atrás rapidinho!";
             
             default:
                 return "Desculpe, não consegui processar essa solicitação. Poderia perguntar sobre um produto?";
@@ -360,6 +341,11 @@ async function processarMensagem(mensagemRecebida, context) {
     }
 }
 
+// ===========================================================================
+// FUNÇÃO processarBusca
+// ===========================================================================
+
+
 /**
  * Função auxiliar para processar a busca e formatar a resposta.
  * @param {string} termoBusca - O termo de busca.
@@ -369,13 +355,13 @@ async function processarMensagem(mensagemRecebida, context) {
 
 async function processarBusca(termoBusca, context) {
     const resultadoBusca = await buscarProdutoTiny(termoBusca);
-    // Removemos a linha `salvarJSON('respostaGemini.json', resultadoBusca);` daqui para evitar o arquivo ser sobrescrito incorretamente.
     
     if (resultadoBusca.sucesso) {
+        // Salva a lista de produtos no contexto do usuário para futuras interações.
         context.produtos = resultadoBusca.produtos;
-        
+
         if (resultadoBusca.produtos.length > MAX_PRODUTOS_PARA_LISTAR) {
-            return `Encontrei ${resultadoBusca.produtos.length} produtos para "${termoBusca}". Por favor, seja mais específico na sua busca (ex: "inox profissional").`;
+            return `Achei vários modelos de  ${termoBusca}.\nVocê quer que eu te mostre tudo ou prefere me dizer qual tipo tá buscando?.`;
         }
 
         let respostaProdutos = `🔎 Encontrei os seguintes produtos para "${termoBusca}":\n\n`;
@@ -391,7 +377,6 @@ async function processarBusca(termoBusca, context) {
         return resultadoBusca.erro;
     }
 }
-
 /**
  * Verifica a conexão com a API do Google Gemini.
  * @returns {Promise<boolean>} - True se a conexão for bem-sucedida, false caso contrário.
@@ -437,7 +422,7 @@ server = app.listen(port, async () => {
         deleteSession: false,
         catchQR: (base64Qr, asciiQR) => {
             console.info('=== ESCANEIE O QR CODE PARA CONECTAR ===');
-            console.info(asciiQR); 
+            console.info(asciiQR);
         },
         statusFind: (statusSession) => {
             console.info('Status da sessão WhatsApp:', statusSession);

@@ -1,6 +1,6 @@
-2025/08/09-00:37:55.666 ba9c Reusing MANIFEST C:\Users\sr188\Desktop\trabalhos\amigos\whats-ia\resposta-generativa-WhatsApp\wppconnect-bot\tokens\whatsapp-bot\Default\Local Storage\leveldb/MANIFEST-000001
-2025/08/09-00:37:55.672 ba9c Recovering log #45
-2025/08/09-00:37:55.675 ba9c Reusing old log C:\Users\sr188\Desktop\trabalhos\amigos\whats-ia\resposta-generativa-WhatsApp\wppconnect-bot\tokens\whatsapp-bot\Default\Local Storage\leveldb/000045.log 
-2025/08/09-01:35:55.825 c1e4 Level-0 table #50: started
-2025/08/09-01:35:55.829 c1e4 Level-0 table #50: 12058 bytes OK
-2025/08/09-01:35:55.830 c1e4 Delete type=0 #45
+2025/08/12-10:17:15.599 3a3c Reusing MANIFEST C:\Users\sr188\Desktop\trabalhos\amigos\whats-ia\resposta-generativa-WhatsApp\wppconnect-bot\tokens\whatsapp-bot\Default\Local Storage\leveldb/MANIFEST-000001
+2025/08/12-10:17:15.605 3a3c Recovering log #82
+2025/08/12-10:17:15.608 3a3c Reusing old log C:\Users\sr188\Desktop\trabalhos\amigos\whats-ia\resposta-generativa-WhatsApp\wppconnect-bot\tokens\whatsapp-bot\Default\Local Storage\leveldb/000082.log 
+2025/08/12-10:46:15.846 39c0 Level-0 table #87: started
+2025/08/12-10:46:15.851 39c0 Level-0 table #87: 12250 bytes OK
+2025/08/12-10:46:15.852 39c0 Delete type=0 #82

@@ -1,0 +1,602 @@
+[
+  {
+    "nome": " Kit Cuba Gastronômica Inox Gn 1/2 100mm Alça Com Tampa ",
+    "id": "1032464219",
+    "preco": 115.8,
+    "estoque": 0
+  },
+  {
+    "nome": "10 Cubas Gastronômica Gn 1/6x100 Rechaud Buffet Self Service",
+    "id": "973489105",
+    "preco": 649.9,
+    "estoque": 3
+  },
+  {
+    "nome": "10 Cubas Gastronômica Inox Com Tampa Para Buffet 1/1 100mm",
+    "id": "973493768",
+    "preco": 1001.61,
+    "estoque": 0
+  },
+  {
+    "nome": "10 Cubas Gastronomicas Inox Gn 1/2x100 E 10 Tampas 1/2",
+    "id": "976598794",
+    "preco": 1078.9,
+    "estoque": 0
+  },
+  {
+    "nome": "3 Cubas Gastronômica Inox Buffet Rechaud 1/1 100mm Com Tampa",
+    "id": "973493332",
+    "preco": 383.4,
+    "estoque": 0
+  },
+  {
+    "nome": "5 Cubas Gelato Expositor Sorvete Inox Profissional 36x25x8",
+    "id": "973506661",
+    "preco": 1498.9,
+    "estoque": 0
+  },
+  {
+    "nome": "6 Cubas Gastronômica Inox Com Tampa Para Buffet 1/1 100mm",
+    "id": "973516569",
+    "preco": 696.51,
+    "estoque": 0
+  },
+  {
+    "nome": "6 Cubas Gelato Expositor Sorvete Inox Profissional 36x25x8",
+    "id": "973494248",
+    "preco": 1560,
+    "estoque": 0
+  },
+  {
+    "nome": "8 Cubas Gelato Expositor Sorvete Inox Profissional 36x25x8",
+    "id": "976967849",
+    "preco": 2437.9,
+    "estoque": 0
+  },
+  {
+    "nome": "Caixa Térmica Hotbox 80 Litros Com Duas Cubas Gn 1/1 200mm",
+    "id": "972421262",
+    "preco": 1590,
+    "estoque": 0
+  },
+  {
+    "nome": "CHAPA PREMIUM CHP 45 METALCUBAS",
+    "id": "1032464114",
+    "preco": 5277.87,
+    "estoque": 0
+  },
+  {
+    "nome": "CHAPAS PREMIUM CHP 120 METALCUBAS",
+    "id": "1032464098",
+    "preco": 10185.55,
+    "estoque": 0
+  },
+  {
+    "nome": "CHAPAS PREMIUM CHP 60 METALCUBAS",
+    "id": "1032464107",
+    "preco": 6220,
+    "estoque": 0
+  },
+  {
+    "nome": "CHAPAS PREMIUM CHP 90 METALCUBAS",
+    "id": "1032464102",
+    "preco": 8361.11,
+    "estoque": 0
+  },
+  {
+    "nome": "Condimentadora Pizzarola 2 Cubas Inox Bancada Parede",
+    "id": "969749881",
+    "preco": 0,
+    "estoque": 0
+  },
+  {
+    "nome": "Condimentadora Pizzarola 3 Cubas Inox Bancada Parede",
+    "id": "969749877",
+    "preco": 0,
+    "estoque": 0
+  },
+  {
+    "nome": "Condimentadora Pizzarola 4 Cubas Inox Profissional",
+    "id": "969749857",
+    "preco": 0,
+    "estoque": 0
+  },
+  {
+    "nome": "Condimentadora Pizzarola 5 Cubas Inox Bancada Parede",
+    "id": "969749869",
+    "preco": 0,
+    "estoque": 0
+  },
+  {
+    "nome": "Condimentadora Pizzarola 6 Cubas Inox Bancada Parede",
+    "id": "976176409",
+    "preco": 729.9,
+    "estoque": 0
+  },
+  {
+    "nome": "Condimentadora Pizzarola Profissional 2 Cubas Inox Bancada",
+    "id": "969749865",
+    "preco": 0,
+    "estoque": 1
+  },
+  {
+    "nome": "Condimentadora Pizzarola Profissional 5 Cubas Inox Bancada",
+    "id": "969749853",
+    "preco": 0,
+    "estoque": 0
+  },
+  {
+    "nome": "Condimentadora Pizzarola Profissional 6 Cubas Inox Bancada",
+    "id": "969749849",
+    "preco": 0,
+    "estoque": 0
+  },
+  {
+    "nome": "Condimentadora Pizzarola Tampa Individual 4 Cubas Inox",
+    "id": "969749873",
+    "preco": 0,
+    "estoque": 3
+  },
+  {
+    "nome": "Condimentadora Tampa Reta 3 Cubas Inox",
+    "id": "969749861",
+    "preco": 0,
+    "estoque": 0
+  },
+  {
+    "nome": "Conjunto 8 Cubas GN 1/1 100mm Gastronomica Inox Com Tampa Para Buffet Restaurantes Lanchonetes Cozinhas e Refeitórios em",
+    "id": "981108453",
+    "preco": 980.6,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba 1/1 100mm Gastronomica Inox Tampa Com Recorte Para Buffet Restaurantes Lanchonetes Cozinhas e Refeitórios em Geral",
+    "id": "981099611",
+    "preco": 198.8,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba 1/3 100mm Gastronômica Inox Com Tampa Para Buffet Restaurantes Cozinhas e Refeitórios em Geral",
+    "id": "981159712",
+    "preco": 84.9,
+    "estoque": -1
+  },
+  {
+    "nome": "Cuba Gastronômica De Inox Gn 1/1 De 40mm Buffet",
+    "id": "969754061",
+    "preco": 78.9,
+    "estoque": 22
+  },
+  {
+    "nome": "Cuba Gastronômica De Inox Gn 1/2 100mm Buffet Rechaud",
+    "id": "969753488",
+    "preco": 0,
+    "estoque": 7
+  },
+  {
+    "nome": "Cuba Gastronomica GN 1/1 150mm Com Alça Inox Com Tampa Recorte Para Buffet Restaurantes Lanchonetes Cozinhas e Refeitóri",
+    "id": "981199280",
+    "preco": 200.8,
+    "estoque": 0
+  },
+  {
+    "nome": "CUBA GASTRONOMICA GN 1/1 X 100MM PERFURADA",
+    "id": "1016571846",
+    "preco": 0,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/1 X 20mm Aço Inox Self Service Buffet",
+    "id": "969754066",
+    "preco": 90,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/1x150mm Rechaud Buffet Self Service",
+    "id": "969754053",
+    "preco": 90,
+    "estoque": 81
+  },
+  {
+    "nome": "Cuba Gastronomica Gn 1/1x200 Alça Com Tampa 1/1 Recorte",
+    "id": "976562442",
+    "preco": 387.9,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronomica Gn 1/1x65 C/ Alça Rechaud Buffet Self Serv",
+    "id": "969754057",
+    "preco": 90,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/2 100mm Inox Rechaud Buffet Kit 10 Un",
+    "id": "976128617",
+    "preco": 683.9,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/2 100mm Inox Rechaud Buffet Kit 2 Pçs",
+    "id": "973874967",
+    "preco": 146.2,
+    "estoque": 3
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/2 100mm Inox Rechaud Buffet Kit 6 Pçs",
+    "id": "976182908",
+    "preco": 446.21,
+    "estoque": 1
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/2 65mm Inox Rechaud Buffet Kit 10 Un",
+    "id": "973577002",
+    "preco": 611.2,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/2 65mm Inox Rechaud Buffet Kit 12 Pçs",
+    "id": "975927511",
+    "preco": 831.24,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/2 65mm Inox Rechaud Buffet Kit 2 Pçs",
+    "id": "976923058",
+    "preco": 117.36,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/2 65mm Inox Rechaud Buffet Kit 6 Pçs",
+    "id": "975925300",
+    "preco": 369.7,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/2 X 65 Mm Com Alças",
+    "id": "969745892",
+    "preco": 71.9,
+    "estoque": 40
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/2 X 65 Mm Rechaud Buffet Self Service",
+    "id": "969754070",
+    "preco": 41.9,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/2x150mm Aço Inox Buffet Rechaud",
+    "id": "969753227",
+    "preco": 119.9,
+    "estoque": 2
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/2x150mm Aço Inox Buffet Rechaud 6 Pçs",
+    "id": "976599410",
+    "preco": 514.7,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/2x200mm Rechaud Buffet Self Service",
+    "id": "969750583",
+    "preco": 259.9,
+    "estoque": 17
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/3 100mm Rechaud Buffet Self Service",
+    "id": "1032465230",
+    "preco": 79.9,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/3x100mm Inox Buffet Rechaud",
+    "id": "969750678",
+    "preco": 0,
+    "estoque": -1
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/3x150mm Inox Buffet Rechaud",
+    "id": "972822942",
+    "preco": 128.9,
+    "estoque": 20
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/3x200mm Inox Buffet Rechaud",
+    "id": "969740151",
+    "preco": 0,
+    "estoque": 25
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/4 100mm Aço Inox Buffet Rechaud",
+    "id": "969746349",
+    "preco": 0,
+    "estoque": 31
+  },
+  {
+    "nome": "Cuba Gastronômica GN 1/4 100mm Com Tampa Inox Rechaud Buffet Sem Alça E Envio Imediato",
+    "id": "981094384",
+    "preco": 67.9,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/4 65mm Com Tampa",
+    "id": "981102681",
+    "preco": 79.9,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/4x65 Rechaud Buffet Self Service",
+    "id": "969750591",
+    "preco": 27.28,
+    "estoque": 3
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/6x150mm Rechaud Buffet Self Service",
+    "id": "969753309",
+    "preco": 52.09,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronomica Gn 1/6x65mm Com Tampa Aço Inox Buffet",
+    "id": "973547166",
+    "preco": 57.96,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 1/9x65 Com Tampa 1/9 Rechaud Buffet Self Service",
+    "id": "1029153345",
+    "preco": 69.9,
+    "estoque": 3
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 2/3 65 Alça Com Tampa ",
+    "id": "976562194",
+    "preco": 347.9,
+    "estoque": 4
+  },
+  {
+    "nome": "Cuba Gastronômica Gn 2/4x65 Aço Inox Buffet Self Service",
+    "id": "969749429",
+    "preco": 0,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Inox Com Tampa Para Buffet 1/1 100mm",
+    "id": "973634834",
+    "preco": 148,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Inox Com Tampa Para Buffet 1/1 150mm",
+    "id": "981081801",
+    "preco": 177.2,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Inox Com Tampa Para Buffet 1/1 200mm",
+    "id": "1032453326",
+    "preco": 192.9,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronomica Inox Gn 1/1 100mm Perfurada Para Forno Combinado",
+    "id": "1032464983",
+    "preco": 278.11,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Inox Gn 1/1 150mm C/ Alças Buffet Self Ser",
+    "id": "969754132",
+    "preco": 110,
+    "estoque": 6
+  },
+  {
+    "nome": "Cuba Gastronômica Inox Gn 1/1 200mm Alça Buffet Restaurante",
+    "id": "972424672",
+    "preco": 309.7,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronomica Inox Gn 1/1 X 65mm Buffet Self Service",
+    "id": "969754074",
+    "preco": 70,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronomica Inox Gn 1/1 X 65mm Com Tampa Gn 1/1",
+    "id": "976953249",
+    "preco": 187.11,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Inox Gn 1/1x65 Perfurada Forno Combinado",
+    "id": "969754136",
+    "preco": 110,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gastronômica Inox Gn 1/3x65mm Com Alça",
+    "id": "1032022909",
+    "preco": 0,
+    "estoque": 1
+  },
+  {
+    "nome": "Cuba Gastronomica Inox Gn 1/6x65mm ",
+    "id": "980342633",
+    "preco": 29.37,
+    "estoque": 44
+  },
+  {
+    "nome": "Cuba Gastronomica Inox Gn 1/6x65mm Com Alça",
+    "id": "969749930",
+    "preco": 0,
+    "estoque": 15
+  },
+  {
+    "nome": "Cuba Gastronômica Inox Para Buffet Rechaud 1/1 100mm",
+    "id": "969754080",
+    "preco": 80,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gelato Expositor Sorvete Aço Inox Profissional 36x16x12",
+    "id": "969753404",
+    "preco": 141.71,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gelato Expositor Sorvete Aço Inox Profissional 36x25x8",
+    "id": "969753399",
+    "preco": 141.71,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gelato Expositor Sorvete Profissional 36x16x12 2 Pçs",
+    "id": "977321419",
+    "preco": 607.9,
+    "estoque": 0
+  },
+  {
+    "nome": "CUBA GN 1/1 100MM COM ALÇA AMERICANO",
+    "id": "973491555",
+    "preco": 0,
+    "estoque": 0
+  },
+  {
+    "nome": "CUBA GN 1/1 200MM EUROPEU",
+    "id": "969750621",
+    "preco": 0,
+    "estoque": 2
+  },
+  {
+    "nome": "Cuba Gn 1/1 20mm Black Preto Esmaltada Sem Alça",
+    "id": "969749503",
+    "preco": 0,
+    "estoque": 1
+  },
+  {
+    "nome": "Cuba Gn 1/1 20mm Cinza Esmaltada Sem Alça",
+    "id": "969749507",
+    "preco": 0,
+    "estoque": 5
+  },
+  {
+    "nome": "CUBA GN 1/1 20MM COM ALÇA EUROPEU",
+    "id": "969745879",
+    "preco": 0,
+    "estoque": 10
+  },
+  {
+    "nome": "Cuba Gn 1/1 40mm Black Preto Esmaltada Sem Alça",
+    "id": "969749663",
+    "preco": 0,
+    "estoque": 1
+  },
+  {
+    "nome": "Cuba Gn 1/1 40mm Cinza Esmaltada Sem Alça",
+    "id": "969749659",
+    "preco": 0,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gn 1/1 65mm Black Preto Esmaltada Sem Alça",
+    "id": "969749651",
+    "preco": 0,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gn 1/1 65mm Cinza Esmaltada Sem Alça",
+    "id": "969749655",
+    "preco": 0,
+    "estoque": 0
+  },
+  {
+    "nome": "CUBA GN 1/2 100MM COM ALÇA AMERICANO",
+    "id": "969745896",
+    "preco": 0,
+    "estoque": 17
+  },
+  {
+    "nome": "CUBA GN 1/2 150MM COM ALÇA",
+    "id": "969740114",
+    "preco": 119.9,
+    "estoque": 14
+  },
+  {
+    "nome": "CUBA GN 1/2 200MM COM ALÇA",
+    "id": "969740110",
+    "preco": 0,
+    "estoque": 6
+  },
+  {
+    "nome": "CUBA GN 1/2 65MM PERFURADA",
+    "id": "1014698613",
+    "preco": 0,
+    "estoque": 0
+  },
+  {
+    "nome": "CUBA GN 1/3 100MM COM ALÇA  AMERICANO",
+    "id": "969750191",
+    "preco": 0,
+    "estoque": 10
+  },
+  {
+    "nome": "CUBA GN 1/4 150MM EUROPEU",
+    "id": "969749448",
+    "preco": 0,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gn 1/6 100mm Americano",
+    "id": "969753315",
+    "preco": 29.37,
+    "estoque": 35
+  },
+  {
+    "nome": "Cuba Gn 1/6 100mm Com Tampa Para Buffet Sorveteria Aço Inox",
+    "id": "973486443",
+    "preco": 383.9,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gn 1/6 100mm Com Tampa Para Buffet Sorveteria Aço Inox - Inox",
+    "id": "1031791934",
+    "preco": 93.9,
+    "estoque": 0
+  },
+  {
+    "nome": "CUBA GN 1/9 65MM EUROPEU",
+    "id": "995625939",
+    "preco": 59.9,
+    "estoque": 3
+  },
+  {
+    "nome": "CUBA GN 2/3 65MM COM ALCA EUROPEU",
+    "id": "969749893",
+    "preco": 0,
+    "estoque": 9
+  },
+  {
+    "nome": "Cuba Gn Gastronômica De Inox 1/1 x 200mm Buffet Self Service Sem Alça - Envio Imediato",
+    "id": "981192229",
+    "preco": 269.9,
+    "estoque": 0
+  },
+  {
+    "nome": "Cuba Gn Inox Gastronômica 1/3x65mm Rechaud Buffet",
+    "id": "969754085",
+    "preco": 41.9,
+    "estoque": 0
+  },
+  {
+    "nome": "FORNO SALAMADRA GÁS FSG 45 METALCUBAS",
+    "id": "1032464076",
+    "preco": 2099.55,
+    "estoque": 0
+  },
+  {
+    "nome": "FORNO SALAMADRA GÁS FSG 65 METALCUBAS",
+    "id": "1032464072",
+    "preco": 2339,
+    "estoque": 0
+  }
+]

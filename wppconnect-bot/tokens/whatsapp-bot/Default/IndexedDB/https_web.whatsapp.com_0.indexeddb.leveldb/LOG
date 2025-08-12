@@ -1,19 +1,38 @@
-2025/08/09-00:37:56.271 bbf8 Reusing MANIFEST C:\Users\sr188\Desktop\trabalhos\amigos\whats-ia\resposta-generativa-WhatsApp\wppconnect-bot\tokens\whatsapp-bot\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/08/09-00:37:56.272 bbf8 Recovering log #636
-2025/08/09-00:37:56.294 bbf8 Reusing old log C:\Users\sr188\Desktop\trabalhos\amigos\whats-ia\resposta-generativa-WhatsApp\wppconnect-bot\tokens\whatsapp-bot\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000636.log 
-2025/08/09-00:37:57.311 c14c Level-0 table #644: started
-2025/08/09-00:37:57.323 c14c Level-0 table #644: 577201 bytes OK
-2025/08/09-00:37:57.323 c14c Delete type=0 #636
-2025/08/09-00:37:57.324 bbf8 Manual compaction at level-0 from '\x00\x8d\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x8e\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/08/09-00:37:59.403 be20 Compacting 1@1 + 4@2 files
-2025/08/09-00:37:59.503 be20 Generated table #645@1: 85834 keys, 2236607 bytes
-2025/08/09-00:37:59.593 be20 Generated table #646@1: 76685 keys, 2273696 bytes
-2025/08/09-00:37:59.652 be20 Generated table #647@1: 36163 keys, 2193839 bytes
-2025/08/09-00:37:59.677 be20 Generated table #648@1: 27133 keys, 509734 bytes
-2025/08/09-00:37:59.677 be20 Compacted 1@1 + 4@2 files => 7213876 bytes
-2025/08/09-00:37:59.677 be20 compacted to: files[ 0 0 4 0 0 0 0 ]
-2025/08/09-00:37:59.678 be20 Delete type=2 #638
-2025/08/09-00:37:59.678 be20 Delete type=2 #639
-2025/08/09-00:37:59.678 be20 Delete type=2 #640
-2025/08/09-00:37:59.678 be20 Delete type=2 #641
-2025/08/09-00:37:59.678 be20 Delete type=2 #644
+2025/08/12-10:17:16.233 2924 Reusing MANIFEST C:\Users\sr188\Desktop\trabalhos\amigos\whats-ia\resposta-generativa-WhatsApp\wppconnect-bot\tokens\whatsapp-bot\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/08/12-10:17:16.234 2924 Recovering log #998
+2025/08/12-10:17:16.252 2924 Reusing old log C:\Users\sr188\Desktop\trabalhos\amigos\whats-ia\resposta-generativa-WhatsApp\wppconnect-bot\tokens\whatsapp-bot\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000998.log 
+2025/08/12-10:17:17.272 3aa4 Level-0 table #1007: started
+2025/08/12-10:17:17.279 3aa4 Level-0 table #1007: 307198 bytes OK
+2025/08/12-10:17:17.280 3aa4 Delete type=0 #998
+2025/08/12-10:17:17.281 3af4 Manual compaction at level-0 from '\x00\xb5\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\xb6\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/08/12-10:17:19.305 2924 Compacting 1@1 + 5@2 files
+2025/08/12-10:17:19.388 2924 Generated table #1008@1: 86900 keys, 2237891 bytes
+2025/08/12-10:17:19.478 2924 Generated table #1009@1: 98191 keys, 2249692 bytes
+2025/08/12-10:17:19.564 2924 Generated table #1010@1: 70715 keys, 2306032 bytes
+2025/08/12-10:17:19.632 2924 Generated table #1011@1: 33119 keys, 2200491 bytes
+2025/08/12-10:17:19.710 2924 Generated table #1012@1: 62923 keys, 1946185 bytes
+2025/08/12-10:17:19.710 2924 Compacted 1@1 + 5@2 files => 10940291 bytes
+2025/08/12-10:17:19.710 2924 compacted to: files[ 0 0 5 0 0 0 0 ]
+2025/08/12-10:17:19.711 2924 Delete type=2 #1000
+2025/08/12-10:17:19.711 2924 Delete type=2 #1001
+2025/08/12-10:17:19.711 2924 Delete type=2 #1002
+2025/08/12-10:17:19.711 2924 Delete type=2 #1003
+2025/08/12-10:17:19.711 2924 Delete type=2 #1004
+2025/08/12-10:17:19.711 2924 Delete type=2 #1007
+2025/08/12-11:19:53.459 2924 Level-0 table #1014: started
+2025/08/12-11:19:53.489 2924 Level-0 table #1014: 1129486 bytes OK
+2025/08/12-11:19:53.490 2924 Delete type=0 #1006
+2025/08/12-11:20:57.021 3aa4 Compacting 1@1 + 5@2 files
+2025/08/12-11:20:57.098 3aa4 Generated table #1015@1: 87222 keys, 2237600 bytes
+2025/08/12-11:20:57.179 3aa4 Generated table #1016@1: 98112 keys, 2249324 bytes
+2025/08/12-11:20:57.255 3aa4 Generated table #1017@1: 71741 keys, 2312789 bytes
+2025/08/12-11:20:57.316 3aa4 Generated table #1018@1: 33649 keys, 2208381 bytes
+2025/08/12-11:20:57.390 3aa4 Generated table #1019@1: 63390 keys, 1994485 bytes
+2025/08/12-11:20:57.390 3aa4 Compacted 1@1 + 5@2 files => 11002579 bytes
+2025/08/12-11:20:57.391 3aa4 compacted to: files[ 0 0 5 0 0 0 0 ]
+2025/08/12-11:20:57.391 3aa4 Delete type=2 #1008
+2025/08/12-11:20:57.391 3aa4 Delete type=2 #1009
+2025/08/12-11:20:57.391 3aa4 Delete type=2 #1010
+2025/08/12-11:20:57.392 3aa4 Delete type=2 #1011
+2025/08/12-11:20:57.392 3aa4 Delete type=2 #1012
+2025/08/12-11:20:57.392 3aa4 Delete type=2 #1014

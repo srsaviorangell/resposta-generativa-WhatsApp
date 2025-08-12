@@ -1,3 +1,15 @@
-2025/08/09-00:34:02.822 c3d4 Reusing MANIFEST C:\Users\sr188\Desktop\trabalhos\amigos\whats-ia\resposta-generativa-WhatsApp\wppconnect-bot\tokens\whatsapp-bot\Default\Local Storage\leveldb/MANIFEST-000001
-2025/08/09-00:34:02.828 c3d4 Recovering log #45
-2025/08/09-00:34:02.831 c3d4 Reusing old log C:\Users\sr188\Desktop\trabalhos\amigos\whats-ia\resposta-generativa-WhatsApp\wppconnect-bot\tokens\whatsapp-bot\Default\Local Storage\leveldb/000045.log 
+2025/08/11-22:26:19.003 1729c Reusing MANIFEST C:\Users\sr188\Desktop\trabalhos\amigos\whats-ia\resposta-generativa-WhatsApp\wppconnect-bot\tokens\whatsapp-bot\Default\Local Storage\leveldb/MANIFEST-000001
+2025/08/11-22:26:19.010 1729c Recovering log #79
+2025/08/11-22:26:19.012 1729c Reusing old log C:\Users\sr188\Desktop\trabalhos\amigos\whats-ia\resposta-generativa-WhatsApp\wppconnect-bot\tokens\whatsapp-bot\Default\Local Storage\leveldb/000079.log 
+2025/08/11-23:51:19.177 18728 Level-0 table #83: started
+2025/08/11-23:51:19.183 18728 Level-0 table #83: 11000 bytes OK
+2025/08/11-23:51:19.185 18728 Delete type=0 #79
+2025/08/11-23:51:19.186 18728 Compacting 4@0 + 1@1 files
+2025/08/11-23:51:19.192 18728 Generated table #84@0: 164 keys, 7491 bytes
+2025/08/11-23:51:19.192 18728 Compacted 4@0 + 1@1 files => 7491 bytes
+2025/08/11-23:51:19.192 18728 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/08/11-23:51:19.193 18728 Delete type=2 #71
+2025/08/11-23:51:19.194 18728 Delete type=2 #74
+2025/08/11-23:51:19.194 18728 Delete type=2 #77
+2025/08/11-23:51:19.194 18728 Delete type=2 #80
+2025/08/11-23:51:19.194 18728 Delete type=2 #83

@@ -1,0 +1,32 @@
+{
+  "retorno": {
+    "status_processamento": "3",
+    "status": "OK",
+    "produto": {
+      "id": "1032464219",
+      "nome": " Kit Cuba Gastronômica Inox Gn 1/2 100mm Alça Com Tampa ",
+      "codigo": "V7VAC12100CA12RTA",
+      "unidade": "",
+      "saldo": 0,
+      "saldoReservado": 0,
+      "depositos": [
+        {
+          "deposito": {
+            "nome": "Geral",
+            "desconsiderar": "N",
+            "saldo": 0,
+            "empresa": "24296646000126"
+          }
+        },
+        {
+          "deposito": {
+            "nome": "Mercado Livre Full",
+            "desconsiderar": "S",
+            "saldo": 0,
+            "empresa": "24296646000126"
+          }
+        }
+      ]
+    }
+  }
+}
